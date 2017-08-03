@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Ppress" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=OPSQLSVR001\SQLSVR2008;Initial Catalog=Ppress;Integrated Security=True" SettingsObjectName="Ppress.My.MySettings" SettingsPropertyName="PPressConnetion" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.tblECMtype" Member="tblECMtypes">
+    <Type Name="tblECMtype">
+      <Column Name="Type" Type="System.String" DbType="NChar(2) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="[Desc]" Member="Desc" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblECMlocation" Member="tblECMlocations">
+    <Type Name="tblECMlocation">
+      <Column Name="Location" Type="System.String" DbType="NChar(4) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Country" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblECMmaid" Member="tblECMmaids">
+    <Type Name="tblECMmaid">
+      <Column Name="ID" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Pcopy" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="ECMflag" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Chgdate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="[User]" Member="User" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblECMcustomer" Member="tblECMcustomers">
+    <Type Name="tblECMcustomer">
+      <Column Name="Location" Type="System.String" DbType="NChar(4) NOT NULL" CanBeNull="false" />
+      <Column Name="CustID" Type="System.String" DbType="NChar(7) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblECMmast" Member="tblECMmasts">
+    <Type Name="tblECMmast">
+      <Column Name="Recid" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Type" Type="System.String" DbType="NChar(2) NOT NULL" CanBeNull="false" />
+      <Column Name="Location" Type="System.String" DbType="NChar(4) NOT NULL" CanBeNull="false" />
+      <Column Name="Customer" Type="System.String" DbType="NChar(7) NOT NULL" CanBeNull="false" />
+      <Column Name="MA" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Recipent" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="Chgdate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="[User]" Member="User" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Trader" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="Pflag" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblECMAuthority" Member="tblECMAuthorities">
+    <Type Name="tblECMAuthority">
+      <Column Name="Recid" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="Userid" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Authority" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblECMhelpcontact" Member="tblECMhelpcontacts">
+    <Type Name="tblECMhelpcontact">
+      <Column Name="Recid" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Appid" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Contact" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblecmprcntl3" Member="tblecmprcntl3s">
+    <Type Name="tblecmprcntl3">
+      <Column Name="Recid" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Refid" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="Loc" Type="System.String" DbType="NChar(4)" CanBeNull="true" />
+      <Column Name="Zipcode" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Formid" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="PrinterID" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="[Desc]" Member="Desc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Chgdate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="[User]" Member="User" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Pcopy" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.prcntl3_change" Member="prcntl3_changes">
+    <Type Name="prcntl3_change">
+      <Column Name="Recid" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Refid" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="Loc" Type="System.String" DbType="NChar(4)" CanBeNull="true" />
+      <Column Name="Zipcode" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Formid" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="PrinterID" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="[Desc]" Member="Desc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Chgdate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="[User]" Member="User" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Pcopy" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="Orecid" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblECMmamast" Member="tblECMmamasts">
+    <Type Name="tblECMmamast">
+      <Column Name="MA" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Pcopy" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="Chgdate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="[User]" Member="User" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.prcntl2_change" Member="prcntl2_changes">
+    <Type Name="prcntl2_change">
+      <Column Name="Recid" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MAid" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Zipcode" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="PrinterID" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="[Desc]" Member="Desc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Chgdate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="[User]" Member="User" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Orecid" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblECMprcntl2" Member="tblECMprcntl2s">
+    <Type Name="tblECMprcntl2">
+      <Column Name="Recid" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MAid" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Zipcode" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="PrinterID" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="[Desc]" Member="Desc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Chgdate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="[User]" Member="User" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblECMecosign" Member="tblECMecosigns">
+    <Type Name="tblECMecosign">
+      <Column Name="Recid" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TRid" Type="System.String" DbType="NChar(7) NOT NULL" CanBeNull="false" />
+      <Column Name="TRname" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="Customer" Type="System.String" DbType="NChar(7) NOT NULL" CanBeNull="false" />
+      <Column Name="Chgdate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="[User]" Member="User" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ECMmast_change" Member="ECMmast_changes">
+    <Type Name="ECMmast_change">
+      <Column Name="Recid" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Type" Type="System.String" DbType="NChar(2) NOT NULL" CanBeNull="false" />
+      <Column Name="Location" Type="System.String" DbType="NChar(4) NOT NULL" CanBeNull="false" />
+      <Column Name="Customer" Type="System.String" DbType="NChar(7) NOT NULL" CanBeNull="false" />
+      <Column Name="MA" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Recipent" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="Chgdate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="[User]" Member="User" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Trader" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="Pflag" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="Orecid" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblECMPrinter_Settings" Member="tblECMPrinter_Settings">
+    <Type Name="tblECMPrinter_Setting">
+      <Column Name="Recid" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Printer_Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Postscript_Flag" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="[User]" Member="User" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="Chgdate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblecmCustConf" Member="tblecmCustConfs">
+    <Type Name="tblecmCustConf">
+      <Column Name="location" Type="System.String" DbType="NChar(4) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Custid" Type="System.String" DbType="NChar(7) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="confdate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="[user]" Member="user" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="adddate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="RFlag" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.sp_rebuild_iseries_cust" Method="sp_rebuild_iseries_cust">
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_drop_mast_change" Method="sp_drop_mast_change">
+    <Parameter Name="p1" Type="System.String" DbType="NVarChar(10)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_create_mast_change" Method="sp_create_mast_change">
+    <Parameter Name="p1" Type="System.String" DbType="NVarChar(10)" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>
