@@ -13,35 +13,11 @@
       <Column Name="Country" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.tblECMmaid" Member="tblECMmaids">
-    <Type Name="tblECMmaid">
-      <Column Name="ID" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="name" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
-      <Column Name="Pcopy" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
-      <Column Name="ECMflag" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="Chgdate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="[User]" Member="User" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.tblECMcustomer" Member="tblECMcustomers">
     <Type Name="tblECMcustomer">
       <Column Name="Location" Type="System.String" DbType="NChar(4) NOT NULL" CanBeNull="false" />
       <Column Name="CustID" Type="System.String" DbType="NChar(7) NOT NULL" CanBeNull="false" />
       <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-    </Type>
-  </Table>
-  <Table Name="dbo.tblECMmast" Member="tblECMmasts">
-    <Type Name="tblECMmast">
-      <Column Name="Recid" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Type" Type="System.String" DbType="NChar(2) NOT NULL" CanBeNull="false" />
-      <Column Name="Location" Type="System.String" DbType="NChar(4) NOT NULL" CanBeNull="false" />
-      <Column Name="Customer" Type="System.String" DbType="NChar(7) NOT NULL" CanBeNull="false" />
-      <Column Name="MA" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
-      <Column Name="Recipent" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
-      <Column Name="Chgdate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="[User]" Member="User" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
-      <Column Name="Trader" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
-      <Column Name="Pflag" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.tblECMAuthority" Member="tblECMAuthorities">
@@ -163,15 +139,130 @@
       <Column Name="RFlag" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.tblECMmast" Member="tblECMmasts">
+    <Type Name="tblECMmast">
+      <Column Name="Recid" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Type" Type="System.String" DbType="NChar(2) NOT NULL" CanBeNull="false" />
+      <Column Name="Location" Type="System.String" DbType="NChar(4) NOT NULL" CanBeNull="false" />
+      <Column Name="Customer" Type="System.String" DbType="NChar(7) NOT NULL" CanBeNull="false" />
+      <Column Name="MA" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Recipent" Type="System.String" DbType="NVarChar(160) NOT NULL" CanBeNull="false" />
+      <Column Name="Chgdate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="[User]" Member="User" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Trader" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="Pflag" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="Flag1" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="Flag2" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="ESflag" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="RMflag" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblECMmaid" Member="tblECMmaids">
+    <Type Name="tblECMmaid">
+      <Column Name="ID" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Pcopy" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="ECMflag" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Chgdate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="[User]" Member="User" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblMerchMast" Member="tblMerchMasts">
+    <Type Name="tblMerchMast">
+      <Column Name="fldRecid" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="fldMerchID" Type="System.String" DbType="NChar(7)" CanBeNull="true" />
+      <Column Name="fldMerchName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="fldMerchEmail" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="fldFlag1" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="fldChangeDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="fldUser" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblMobile_Customer_Users" Member="tblMobile_Customer_Users">
+    <Type Name="tblMobile_Customer_User">
+      <Column Name="mobile_number" Type="System.String" DbType="Char(12) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="first_name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="last_name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="authorization_code" Type="System.String" DbType="Char(32)" CanBeNull="true" />
+      <Column Name="mobile_status" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="last_verification" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="comment" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="created_user" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="created_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="change_user" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="change_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="tblMobile_Customer_User_tblMobile_Customer_User" Member="tblMobile_Customer_User1" ThisKey="mobile_number" OtherKey="mobile_number" Type="tblMobile_Customer_User" Cardinality="One" />
+      <Association Name="tblMobile_Customer_User_tblMobile_Customer_User1" Member="tblMobile_Customer_User3" ThisKey="mobile_number" OtherKey="mobile_number" Type="tblMobile_Customer_User" Cardinality="One" />
+      <Association Name="tblMobile_Customer_User_tblMobile_Customer_Xref" Member="tblMobile_Customer_Xrefs" ThisKey="mobile_number" OtherKey="mobile_number" Type="tblMobile_Customer_Xref" />
+      <Association Name="tblMobile_Customer_User_tblMobile_Customer_Email" Member="tblMobile_Customer_Emails" ThisKey="mobile_number" OtherKey="mobile_number" Type="tblMobile_Customer_Email" />
+      <Association Name="tblMobile_Customer_User_tblMobile_Customer_User" Member="tblMobile_Customer_User" ThisKey="mobile_number" OtherKey="mobile_number" Type="tblMobile_Customer_User" IsForeignKey="true" />
+      <Association Name="tblMobile_Customer_User_tblMobile_Customer_User1" Member="tblMobile_Customer_User2" ThisKey="mobile_number" OtherKey="mobile_number" Type="tblMobile_Customer_User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblMobile_Customer_Xref" Member="tblMobile_Customer_Xrefs">
+    <Type Name="tblMobile_Customer_Xref">
+      <Column Name="mobile_number" Type="System.String" DbType="Char(12) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="customer_id" Type="System.String" DbType="Char(7) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="xref_status" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="created_user" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="created_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="change_user" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="change_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="tblMobile_Customer_User_tblMobile_Customer_Xref" Member="tblMobile_Customer_User" ThisKey="mobile_number" OtherKey="mobile_number" Type="tblMobile_Customer_User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[View_Mobile_Users_Xref]" Member="View_Mobile_Users_Xrefs">
+    <Type Name="View_Mobile_Users_Xref">
+      <Column Name="mobile_number" Type="System.String" DbType="Char(12) NOT NULL" CanBeNull="false" />
+      <Column Name="first_name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="last_name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="authorization_code" Type="System.String" DbType="Char(32)" CanBeNull="true" />
+      <Column Name="mobile_status" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="last_verification" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="comment" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(101)" CanBeNull="true" />
+      <Column Name="customer_id" Type="System.String" DbType="Char(7) NOT NULL" CanBeNull="false" />
+      <Column Name="xref_status" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="rmname" Type="System.String" DbType="Char(30)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.View_Mobile_Email_Customer" Member="View_Mobile_Email_Customers">
+    <Type Name="View_Mobile_Email_Customer">
+      <Column Name="mobile_number" Type="System.String" DbType="Char(12) NOT NULL" CanBeNull="false" />
+      <Column Name="email_address" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="email_status" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="mobile_status" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblMobile_Customer_Emails" Member="tblMobile_Customer_Emails">
+    <Type Name="tblMobile_Customer_Email">
+      <Column Name="mobile_number" Type="System.String" DbType="Char(12) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="email_address" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="email_status" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="comment" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="created_user" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="created_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="changed_user" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="changed_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="tblMobile_Customer_User_tblMobile_Customer_Email" Member="tblMobile_Customer_User" ThisKey="mobile_number" OtherKey="mobile_number" Type="tblMobile_Customer_User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.View_Ecmmast_Mobile_Customer" Member="View_Ecmmast_Mobile_Customers">
+    <Type Name="View_Ecmmast_Mobile_Customer">
+      <Column Name="Recipent" Type="System.String" DbType="NVarChar(160) NOT NULL" CanBeNull="false" />
+      <Column Name="mobile_number" Type="System.String" DbType="Char(12)" CanBeNull="true" />
+      <Column Name="Customer" Type="System.String" DbType="NChar(7) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
   <Function Name="dbo.sp_rebuild_iseries_cust" Method="sp_rebuild_iseries_cust">
     <Return Type="System.Int32" />
   </Function>
   <Function Name="dbo.sp_drop_mast_change" Method="sp_drop_mast_change">
-    <Parameter Name="p1" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="p1" Type="System.String" DbType="NVarChar(20)" />
     <Return Type="System.Int32" />
   </Function>
   <Function Name="dbo.sp_create_mast_change" Method="sp_create_mast_change">
-    <Parameter Name="p1" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="p1" Type="System.String" DbType="NVarChar(20)" />
     <Return Type="System.Int32" />
   </Function>
 </Database>

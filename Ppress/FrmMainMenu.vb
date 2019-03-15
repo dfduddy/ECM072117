@@ -8,7 +8,6 @@ Public Class FrmMainMenu
                 ' Place code here
                 Dim f As New FrmDocRouting
                 f.Show()
-
             Case "Customer Confirmation"    ' ButtonTool
                 ' Place code here
                 Dim f As New FrmCustConf
@@ -34,6 +33,13 @@ Public Class FrmMainMenu
             Case "Printer Settings"    ' ButtonTool
                 Dim f As New FrmPrinter_Settings
                 f.Show()
+            Case "Merchant Maintenance"    ' ButtonTool
+                Dim f As New FrmMRmaster
+                f.Show()
+            Case "Mobile Enrollment"    ' ButtonTool
+                Dim f As New FrmMobCust
+                f.Show()
+
         End Select
     End Sub
 

@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="PpressDataSet1" targetNamespace="http://tempuri.org/PpressDataSet1.xsd" xmlns:mstns="http://tempuri.org/PpressDataSet1.xsd" xmlns="http://tempuri.org/PpressDataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="PPressConnetion" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="PPressConnetion (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Ppress.My.MySettings.GlobalReference.Default.PPressConnetion" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="tblECMcustomerTableAdapter" GeneratorDataComponentClassName="tblECMcustomerTableAdapter" Name="tblECMcustomer" UserDataComponentName="tblECMcustomerTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="PPressConnetion (MySettings)" DbObjectName="Ppress.dbo.tblECMcustomer" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT CustID, Name FROM dbo.tblECMcustomer</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="CustID" DataSetColumn="CustID" />
+              <Mapping SourceColumn="Name" DataSetColumn="Name" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="PpressDataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="PpressDataSet1" msprop:Generator_UserDSName="PpressDataSet1">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="tblECMcustomer" msprop:Generator_TableClassName="tblECMcustomerDataTable" msprop:Generator_TableVarName="tabletblECMcustomer" msprop:Generator_TablePropName="tblECMcustomer" msprop:Generator_RowDeletingName="tblECMcustomerRowDeleting" msprop:Generator_RowChangingName="tblECMcustomerRowChanging" msprop:Generator_RowEvHandlerName="tblECMcustomerRowChangeEventHandler" msprop:Generator_RowDeletedName="tblECMcustomerRowDeleted" msprop:Generator_UserTableName="tblECMcustomer" msprop:Generator_RowChangedName="tblECMcustomerRowChanged" msprop:Generator_RowEvArgName="tblECMcustomerRowChangeEvent" msprop:Generator_RowClassName="tblECMcustomerRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CustID" msprop:Generator_ColumnVarNameInTable="columnCustID" msprop:Generator_ColumnPropNameInRow="CustID" msprop:Generator_ColumnPropNameInTable="CustIDColumn" msprop:Generator_UserColumnName="CustID">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="7" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -37,6 +37,7 @@ Public Class FrmUpdateAS400
     End Sub
     Private Sub runproc()
         Dim dc As New DataClasses1DataContext
+        dc.CommandTimeout = 120
         If dc.sp_rebuild_iseries_cust() = 1 Then
             MessageBox.Show("An error has occurred on rebuild!" & vbCrLf & "Contact IT for assitance", "File Rebuild Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
         End If

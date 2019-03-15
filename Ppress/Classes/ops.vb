@@ -6,6 +6,7 @@ Imports System.Linq
 Imports System.Data
 Imports System.Data.Odbc
 Imports System.Data.Sql
+Imports System.Net.Mail
 Public Class ops
     Public Shared Function get_authority(u As String) As tblECMAuthority
         Dim dc As New DataClasses1DataContext
@@ -50,5 +51,21 @@ Public Class ops
         Return 0
 
     End Function
+    Public Function send_email(recp As String, msg As String) As Boolean
+        Dim SmtpServer As New SmtpClient()
+        Dim mail As New MailMessage()
+        SmtpServer.UseDefaultCredentials = True
+        'Net.NetworkCredential()
+        SmtpServer.Port = 25
+        SmtpServer.Host = "op-mail"
+        mail = New MailMessage()
+        mail.From = New MailAddress("YOURusername@gmail.com")
+        mail.To.Add("TOADDRESS")
+        mail.Subject = "Test Mail"
+        mail.Body = "This is for testing SMTP mail from GMAIL"
+        SmtpServer.Send(mail)
+        Return True
+    End Function
+
 
 End Class

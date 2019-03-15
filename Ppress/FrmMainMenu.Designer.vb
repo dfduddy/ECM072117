@@ -35,12 +35,13 @@ Partial Class FrmMainMenu
         Dim ButtonTool7 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Document Routing")
         Dim PopupMenuTool7 As Infragistics.Win.UltraWinToolbars.PopupMenuTool = New Infragistics.Win.UltraWinToolbars.PopupMenuTool("Maintenance")
         Dim ButtonTool1 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Document Routing")
-        Dim ButtonTool3 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Customer Confirmation")
         Dim ButtonTool2 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Printer Control 3")
         Dim ButtonTool8 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("MA maintenance")
         Dim ButtonTool10 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Printer Control 2")
         Dim ButtonTool12 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("EcoSign Maintenance")
         Dim ButtonTool18 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Printer Settings")
+        Dim ButtonTool21 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Merchant Maintenance")
+        Dim ButtonTool20 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Mobile Enrollment")
         Dim PopupMenuTool8 As Infragistics.Win.UltraWinToolbars.PopupMenuTool = New Infragistics.Win.UltraWinToolbars.PopupMenuTool("Reports")
         Dim ButtonTool5 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Document Routing")
         Dim ButtonTool6 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Customer Confirmation")
@@ -55,6 +56,8 @@ Partial Class FrmMainMenu
         Dim ButtonTool14 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Rebuild AS400 Customers")
         Dim ButtonTool15 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Rebuild AS400 Customers")
         Dim ButtonTool19 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Printer Settings")
+        Dim ButtonTool22 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Merchant Maintenance")
+        Dim ButtonTool23 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Mobile Enrollment")
         Me.FrmMainMenu_Fill_Panel = New Infragistics.Win.Misc.UltraPanel()
         Me._FrmMainMenu_Toolbars_Dock_Area_Right = New Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea()
         Me.UltraToolbarsManager1 = New Infragistics.Win.UltraWinToolbars.UltraToolbarsManager(Me.components)
@@ -92,7 +95,7 @@ Partial Class FrmMainMenu
         Me.UltraToolbarsManager1.DockWithinContainerBaseType = GetType(System.Windows.Forms.Form)
         UltraToolbar1.DockedColumn = 0
         UltraToolbar1.DockedRow = 0
-        UltraToolbar1.FloatingSize = New System.Drawing.Size(226, 44)
+        UltraToolbar1.FloatingSize = New System.Drawing.Size(151, 64)
         UltraToolbar1.NonInheritedTools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {PopupMenuTool1, PopupMenuTool2, PopupMenuTool4, PopupMenuTool3, PopupMenuTool10, PopupMenuTool11})
         UltraToolbar1.Text = "UltraToolbar1"
         Me.UltraToolbarsManager1.Toolbars.AddRange(New Infragistics.Win.UltraWinToolbars.UltraToolbar() {UltraToolbar1})
@@ -100,7 +103,8 @@ Partial Class FrmMainMenu
         PopupMenuTool6.SharedPropsInternal.Caption = "Edit"
         PopupMenuTool6.Tools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {ButtonTool7})
         PopupMenuTool7.SharedPropsInternal.Caption = "Maintenance"
-        PopupMenuTool7.Tools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {ButtonTool1, ButtonTool3, ButtonTool2, ButtonTool8, ButtonTool10, ButtonTool12, ButtonTool18})
+        PopupMenuTool7.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.TextOnlyAlways
+        PopupMenuTool7.Tools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {ButtonTool1, ButtonTool2, ButtonTool8, ButtonTool10, ButtonTool12, ButtonTool18, ButtonTool21, ButtonTool20})
         PopupMenuTool8.SharedPropsInternal.Caption = "Reports"
         ButtonTool5.SharedPropsInternal.Caption = "Document Routing"
         ButtonTool6.SharedPropsInternal.Caption = "Customer Confirmation"
@@ -115,7 +119,9 @@ Partial Class FrmMainMenu
         PopupMenuTool12.Tools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {ButtonTool14})
         ButtonTool15.SharedPropsInternal.Caption = "Rebuild AS400 Customers"
         ButtonTool19.SharedPropsInternal.Caption = "Printer Settings"
-        Me.UltraToolbarsManager1.Tools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {PopupMenuTool5, PopupMenuTool6, PopupMenuTool7, PopupMenuTool8, ButtonTool5, ButtonTool6, ButtonTool4, ButtonTool9, ButtonTool11, ButtonTool13, PopupMenuTool9, ButtonTool17, PopupMenuTool12, ButtonTool15, ButtonTool19})
+        ButtonTool22.SharedPropsInternal.Caption = "Merchant Maintenance"
+        ButtonTool23.SharedPropsInternal.Caption = "Mobile Enrollment"
+        Me.UltraToolbarsManager1.Tools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {PopupMenuTool5, PopupMenuTool6, PopupMenuTool7, PopupMenuTool8, ButtonTool5, ButtonTool6, ButtonTool4, ButtonTool9, ButtonTool11, ButtonTool13, PopupMenuTool9, ButtonTool17, PopupMenuTool12, ButtonTool15, ButtonTool19, ButtonTool22, ButtonTool23})
         '
         '_FrmMainMenu_Toolbars_Dock_Area_Left
         '
@@ -161,7 +167,7 @@ Partial Class FrmMainMenu
         Me.Controls.Add(Me._FrmMainMenu_Toolbars_Dock_Area_Top)
         Me.Controls.Add(Me._FrmMainMenu_Toolbars_Dock_Area_Bottom)
         Me.Name = "FrmMainMenu"
-        Me.Text = "Planet Press ECM Maintenance"
+        Me.Text = "Scoular ECM DB Maintenance"
         Me.FrmMainMenu_Fill_Panel.ResumeLayout(False)
         CType(Me.UltraToolbarsManager1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)

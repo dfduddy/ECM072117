@@ -4,14 +4,14 @@ Imports Infragistics.Shared
 Public Class FrmMAmaint
     Dim appid As String = "FrmMAmaint"
     Private Sub FrmMAmaint_Load(sender As Object, e As System.EventArgs) Handles Me.Load
-        If ops.check_authority(9) = True Then
-            Me.UltraGrid1.DisplayLayout.GroupByBox.Hidden = True
-            set_datasource()
-            setup_grid()
-            set_display()
-        Else
-            Me.Dispose()
-        End If
+        ' If ops.check_authority(9) = True Then
+        Me.UltraGrid1.DisplayLayout.GroupByBox.Hidden = True
+        set_datasource()
+        setup_grid()
+        set_display()
+        'Else
+        'Me.Dispose()
+        'End If
     End Sub
     Private Sub set_datasource()
     End Sub

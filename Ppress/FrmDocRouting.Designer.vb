@@ -26,8 +26,6 @@ Partial Class FrmDocRouting
         Dim Appearance2 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance4 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance3 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance9 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance5 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance12 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance8 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance6 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
@@ -147,7 +145,7 @@ Partial Class FrmDocRouting
         Me.UltraGroupBox1.Controls.Add(Me.UltraGrid1)
         Me.UltraGroupBox1.Location = New System.Drawing.Point(12, 178)
         Me.UltraGroupBox1.Name = "UltraGroupBox1"
-        Me.UltraGroupBox1.Size = New System.Drawing.Size(888, 317)
+        Me.UltraGroupBox1.Size = New System.Drawing.Size(934, 317)
         Me.UltraGroupBox1.TabIndex = 0
         Me.UltraGroupBox1.Text = "Document Routing"
         '
@@ -181,12 +179,6 @@ Partial Class FrmDocRouting
         Me.UltraGrid1.DisplayLayout.GroupByBox.PromptAppearance = Appearance3
         Me.UltraGrid1.DisplayLayout.MaxColScrollRegions = 1
         Me.UltraGrid1.DisplayLayout.MaxRowScrollRegions = 1
-        Appearance9.BackColor = System.Drawing.SystemColors.Window
-        Appearance9.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.UltraGrid1.DisplayLayout.Override.ActiveCellAppearance = Appearance9
-        Appearance5.BackColor = System.Drawing.SystemColors.Highlight
-        Appearance5.ForeColor = System.Drawing.SystemColors.HighlightText
-        Me.UltraGrid1.DisplayLayout.Override.ActiveRowAppearance = Appearance5
         Me.UltraGrid1.DisplayLayout.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.Dotted
         Me.UltraGrid1.DisplayLayout.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.Dotted
         Appearance12.BackColor = System.Drawing.SystemColors.Window
@@ -217,7 +209,7 @@ Partial Class FrmDocRouting
         Me.UltraGrid1.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy
         Me.UltraGrid1.Location = New System.Drawing.Point(6, 25)
         Me.UltraGrid1.Name = "UltraGrid1"
-        Me.UltraGrid1.Size = New System.Drawing.Size(837, 252)
+        Me.UltraGrid1.Size = New System.Drawing.Size(888, 252)
         Me.UltraGrid1.TabIndex = 0
         Me.UltraGrid1.Text = "UltraGrid1"
         '

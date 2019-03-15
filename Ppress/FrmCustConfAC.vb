@@ -99,4 +99,7 @@ Public Class FrmCustConfAC
     End Sub
 
 
+    Private Sub UltraTextEditor1_ValueChanged(sender As Object, e As EventArgs) Handles UltraTextEditor1.ValueChanged
+
+    End Sub
 End Class

@@ -23,13 +23,17 @@ Partial Class FrmDocRoutingAC
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim ValueListItem5 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
+        Dim ValueListItem7 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
+        Dim UltraToolTipInfo1 As Infragistics.Win.UltraWinToolTip.UltraToolTipInfo = New Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("", Infragistics.Win.ToolTipImage.[Default], "Print Flag", Infragistics.Win.DefaultableBoolean.[Default])
+        Dim ValueListItem6 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
+        Dim ValueListItem8 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
+        Dim UltraToolTipInfo2 As Infragistics.Win.UltraWinToolTip.UltraToolTipInfo = New Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("", Infragistics.Win.ToolTipImage.[Default], "Print Flag", Infragistics.Win.DefaultableBoolean.[Default])
         Dim EditorButton1 As Infragistics.Win.UltraWinEditors.EditorButton = New Infragistics.Win.UltraWinEditors.EditorButton()
         Dim Appearance26 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance27 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance29 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance28 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance34 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance30 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance37 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance33 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance31 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
@@ -40,8 +44,6 @@ Partial Class FrmDocRoutingAC
         Dim Appearance63 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance64 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance65 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance66 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance67 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance68 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance69 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance70 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
@@ -49,10 +51,10 @@ Partial Class FrmDocRoutingAC
         Dim Appearance72 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance73 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim EditorButton2 As Infragistics.Win.UltraWinEditors.EditorButton = New Infragistics.Win.UltraWinEditors.EditorButton()
-        Dim ValueListItem1 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
-        Dim ValueListItem2 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
-        Dim UltraToolTipInfo1 As Infragistics.Win.UltraWinToolTip.UltraToolTipInfo = New Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("", Infragistics.Win.ToolTipImage.[Default], "Print Flag", Infragistics.Win.DefaultableBoolean.[Default])
-        Dim UltraToolTipInfo2 As Infragistics.Win.UltraWinToolTip.UltraToolTipInfo = New Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Multiple email addresses can be entered separated by a ','", Infragistics.Win.ToolTipImage.[Default], "Recipient Email", Infragistics.Win.DefaultableBoolean.[Default])
+        Dim ValueListItem3 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
+        Dim ValueListItem4 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
+        Dim UltraToolTipInfo3 As Infragistics.Win.UltraWinToolTip.UltraToolTipInfo = New Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("", Infragistics.Win.ToolTipImage.[Default], "Print Flag", Infragistics.Win.DefaultableBoolean.[Default])
+        Dim UltraToolTipInfo4 As Infragistics.Win.UltraWinToolTip.UltraToolTipInfo = New Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Multiple email addresses can be entered separated by a ','", Infragistics.Win.ToolTipImage.[Default], "Recipient Email", Infragistics.Win.DefaultableBoolean.[Default])
         Dim Appearance50 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance51 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance52 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
@@ -103,6 +105,10 @@ Partial Class FrmDocRoutingAC
         Dim Appearance12 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance1 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Me.UltraGroupBox1 = New Infragistics.Win.Misc.UltraGroupBox()
+        Me.UltraComboEditor3 = New Infragistics.Win.UltraWinEditors.UltraComboEditor()
+        Me.UltraLabel10 = New Infragistics.Win.Misc.UltraLabel()
+        Me.UltraComboEditor2 = New Infragistics.Win.UltraWinEditors.UltraComboEditor()
+        Me.UltraLabel9 = New Infragistics.Win.Misc.UltraLabel()
         Me.UltraTextEditor4 = New Infragistics.Win.UltraWinEditors.UltraTextEditor()
         Me.UltraGrid2 = New Infragistics.Win.UltraWinGrid.UltraGrid()
         Me.UltraGrid1 = New Infragistics.Win.UltraWinGrid.UltraGrid()
@@ -127,6 +133,8 @@ Partial Class FrmDocRoutingAC
         Me.UltraToolTipManager1 = New Infragistics.Win.UltraWinToolTip.UltraToolTipManager(Me.components)
         CType(Me.UltraGroupBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.UltraGroupBox1.SuspendLayout()
+        CType(Me.UltraComboEditor3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.UltraComboEditor2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.UltraTextEditor4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.UltraGrid2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.UltraGrid1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -142,6 +150,10 @@ Partial Class FrmDocRoutingAC
         '
         'UltraGroupBox1
         '
+        Me.UltraGroupBox1.Controls.Add(Me.UltraComboEditor3)
+        Me.UltraGroupBox1.Controls.Add(Me.UltraLabel10)
+        Me.UltraGroupBox1.Controls.Add(Me.UltraComboEditor2)
+        Me.UltraGroupBox1.Controls.Add(Me.UltraLabel9)
         Me.UltraGroupBox1.Controls.Add(Me.UltraTextEditor4)
         Me.UltraGroupBox1.Controls.Add(Me.UltraGrid2)
         Me.UltraGroupBox1.Controls.Add(Me.UltraGrid1)
@@ -167,10 +179,62 @@ Partial Class FrmDocRoutingAC
         Me.UltraGroupBox1.TabIndex = 0
         Me.UltraGroupBox1.Text = "Document Routing"
         '
+        'UltraComboEditor3
+        '
+        Me.UltraComboEditor3.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList
+        ValueListItem5.DataValue = "ValueListItem0"
+        ValueListItem5.DisplayText = "N"
+        ValueListItem7.DataValue = "ValueListItem1"
+        ValueListItem7.DisplayText = "Y"
+        Me.UltraComboEditor3.Items.AddRange(New Infragistics.Win.ValueListItem() {ValueListItem5, ValueListItem7})
+        Me.UltraComboEditor3.Location = New System.Drawing.Point(227, 279)
+        Me.UltraComboEditor3.MaxLength = 1
+        Me.UltraComboEditor3.Name = "UltraComboEditor3"
+        Me.UltraComboEditor3.Size = New System.Drawing.Size(43, 21)
+        Me.UltraComboEditor3.SortStyle = Infragistics.Win.ValueListSortStyle.AscendingByValue
+        Me.UltraComboEditor3.TabIndex = 26
+        UltraToolTipInfo1.ToolTipTitle = "Print Flag"
+        Me.UltraToolTipManager1.SetUltraToolTip(Me.UltraComboEditor3, UltraToolTipInfo1)
+        '
+        'UltraLabel10
+        '
+        Me.UltraLabel10.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.UltraLabel10.Location = New System.Drawing.Point(70, 281)
+        Me.UltraLabel10.Name = "UltraLabel10"
+        Me.UltraLabel10.Size = New System.Drawing.Size(100, 23)
+        Me.UltraLabel10.TabIndex = 25
+        Me.UltraLabel10.Text = "Reminder"
+        '
+        'UltraComboEditor2
+        '
+        Me.UltraComboEditor2.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList
+        ValueListItem6.DataValue = "ValueListItem0"
+        ValueListItem6.DisplayText = "N"
+        ValueListItem8.DataValue = "ValueListItem1"
+        ValueListItem8.DisplayText = "Y"
+        Me.UltraComboEditor2.Items.AddRange(New Infragistics.Win.ValueListItem() {ValueListItem6, ValueListItem8})
+        Me.UltraComboEditor2.Location = New System.Drawing.Point(227, 252)
+        Me.UltraComboEditor2.MaxLength = 1
+        Me.UltraComboEditor2.Name = "UltraComboEditor2"
+        Me.UltraComboEditor2.Size = New System.Drawing.Size(43, 21)
+        Me.UltraComboEditor2.SortStyle = Infragistics.Win.ValueListSortStyle.AscendingByValue
+        Me.UltraComboEditor2.TabIndex = 24
+        UltraToolTipInfo2.ToolTipTitle = "Print Flag"
+        Me.UltraToolTipManager1.SetUltraToolTip(Me.UltraComboEditor2, UltraToolTipInfo2)
+        '
+        'UltraLabel9
+        '
+        Me.UltraLabel9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.UltraLabel9.Location = New System.Drawing.Point(70, 250)
+        Me.UltraLabel9.Name = "UltraLabel9"
+        Me.UltraLabel9.Size = New System.Drawing.Size(100, 23)
+        Me.UltraLabel9.TabIndex = 23
+        Me.UltraLabel9.Text = "E-Signature"
+        '
         'UltraTextEditor4
         '
         Me.UltraTextEditor4.ButtonsRight.Add(EditorButton1)
-        Me.UltraTextEditor4.Location = New System.Drawing.Point(227, 194)
+        Me.UltraTextEditor4.Location = New System.Drawing.Point(227, 193)
         Me.UltraTextEditor4.MaxLength = 10
         Me.UltraTextEditor4.Name = "UltraTextEditor4"
         Me.UltraTextEditor4.ReadOnly = True
@@ -200,12 +264,6 @@ Partial Class FrmDocRoutingAC
         Me.UltraGrid2.DisplayLayout.GroupByBox.PromptAppearance = Appearance28
         Me.UltraGrid2.DisplayLayout.MaxColScrollRegions = 1
         Me.UltraGrid2.DisplayLayout.MaxRowScrollRegions = 1
-        Appearance34.BackColor = System.Drawing.SystemColors.Window
-        Appearance34.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.UltraGrid2.DisplayLayout.Override.ActiveCellAppearance = Appearance34
-        Appearance30.BackColor = System.Drawing.SystemColors.Highlight
-        Appearance30.ForeColor = System.Drawing.SystemColors.HighlightText
-        Me.UltraGrid2.DisplayLayout.Override.ActiveRowAppearance = Appearance30
         Me.UltraGrid2.DisplayLayout.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.Dotted
         Me.UltraGrid2.DisplayLayout.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.Dotted
         Appearance37.BackColor = System.Drawing.SystemColors.Window
@@ -263,12 +321,6 @@ Partial Class FrmDocRoutingAC
         Me.UltraGrid1.DisplayLayout.GroupByBox.PromptAppearance = Appearance65
         Me.UltraGrid1.DisplayLayout.MaxColScrollRegions = 1
         Me.UltraGrid1.DisplayLayout.MaxRowScrollRegions = 1
-        Appearance66.BackColor = System.Drawing.SystemColors.Window
-        Appearance66.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.UltraGrid1.DisplayLayout.Override.ActiveCellAppearance = Appearance66
-        Appearance67.BackColor = System.Drawing.SystemColors.Highlight
-        Appearance67.ForeColor = System.Drawing.SystemColors.HighlightText
-        Me.UltraGrid1.DisplayLayout.Override.ActiveRowAppearance = Appearance67
         Me.UltraGrid1.DisplayLayout.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.Dotted
         Me.UltraGrid1.DisplayLayout.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.Dotted
         Appearance68.BackColor = System.Drawing.SystemColors.Window
@@ -318,19 +370,19 @@ Partial Class FrmDocRoutingAC
         'UltraComboEditor1
         '
         Me.UltraComboEditor1.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList
-        ValueListItem1.DataValue = "ValueListItem0"
-        ValueListItem1.DisplayText = " "
-        ValueListItem2.DataValue = "ValueListItem1"
-        ValueListItem2.DisplayText = "P"
-        Me.UltraComboEditor1.Items.AddRange(New Infragistics.Win.ValueListItem() {ValueListItem1, ValueListItem2})
+        ValueListItem3.DataValue = "ValueListItem0"
+        ValueListItem3.DisplayText = " "
+        ValueListItem4.DataValue = "ValueListItem1"
+        ValueListItem4.DisplayText = "P"
+        Me.UltraComboEditor1.Items.AddRange(New Infragistics.Win.ValueListItem() {ValueListItem3, ValueListItem4})
         Me.UltraComboEditor1.Location = New System.Drawing.Point(227, 223)
         Me.UltraComboEditor1.MaxLength = 1
         Me.UltraComboEditor1.Name = "UltraComboEditor1"
         Me.UltraComboEditor1.Size = New System.Drawing.Size(43, 21)
         Me.UltraComboEditor1.SortStyle = Infragistics.Win.ValueListSortStyle.AscendingByValue
         Me.UltraComboEditor1.TabIndex = 18
-        UltraToolTipInfo1.ToolTipTitle = "Print Flag"
-        Me.UltraToolTipManager1.SetUltraToolTip(Me.UltraComboEditor1, UltraToolTipInfo1)
+        UltraToolTipInfo3.ToolTipTitle = "Print Flag"
+        Me.UltraToolTipManager1.SetUltraToolTip(Me.UltraComboEditor1, UltraToolTipInfo3)
         '
         'UltraLabel8
         '
@@ -410,9 +462,9 @@ Partial Class FrmDocRoutingAC
         Me.UltraTextEditor2.Name = "UltraTextEditor2"
         Me.UltraTextEditor2.Size = New System.Drawing.Size(433, 21)
         Me.UltraTextEditor2.TabIndex = 8
-        UltraToolTipInfo2.ToolTipText = "Multiple email addresses can be entered separated by a ','"
-        UltraToolTipInfo2.ToolTipTitle = "Recipient Email"
-        Me.UltraToolTipManager1.SetUltraToolTip(Me.UltraTextEditor2, UltraToolTipInfo2)
+        UltraToolTipInfo4.ToolTipText = "Multiple email addresses can be entered separated by a ','"
+        UltraToolTipInfo4.ToolTipTitle = "Recipient Email"
+        Me.UltraToolTipManager1.SetUltraToolTip(Me.UltraTextEditor2, UltraToolTipInfo4)
         '
         'UltraCombo6
         '
@@ -538,7 +590,7 @@ Partial Class FrmDocRoutingAC
         Me.UltraCombo4.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate
         Me.UltraCombo4.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy
         Me.UltraCombo4.DropDownStyle = Infragistics.Win.UltraWinGrid.UltraComboStyle.DropDownList
-        Me.UltraCombo4.Location = New System.Drawing.Point(59, 288)
+        Me.UltraCombo4.Location = New System.Drawing.Point(59, 329)
         Me.UltraCombo4.MaxLength = 10
         Me.UltraCombo4.Name = "UltraCombo4"
         Me.UltraCombo4.PreferredDropDownSize = New System.Drawing.Size(0, 0)
@@ -722,6 +774,8 @@ Partial Class FrmDocRoutingAC
         CType(Me.UltraGroupBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.UltraGroupBox1.ResumeLayout(False)
         Me.UltraGroupBox1.PerformLayout()
+        CType(Me.UltraComboEditor3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.UltraComboEditor2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.UltraTextEditor4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.UltraGrid2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.UltraGrid1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -759,4 +813,8 @@ Partial Class FrmDocRoutingAC
     Friend WithEvents UltraGrid1 As Infragistics.Win.UltraWinGrid.UltraGrid
     Friend WithEvents UltraTextEditor4 As Infragistics.Win.UltraWinEditors.UltraTextEditor
     Friend WithEvents UltraGrid2 As Infragistics.Win.UltraWinGrid.UltraGrid
+    Friend WithEvents UltraComboEditor2 As Infragistics.Win.UltraWinEditors.UltraComboEditor
+    Friend WithEvents UltraLabel9 As Infragistics.Win.Misc.UltraLabel
+    Friend WithEvents UltraComboEditor3 As Infragistics.Win.UltraWinEditors.UltraComboEditor
+    Friend WithEvents UltraLabel10 As Infragistics.Win.Misc.UltraLabel
 End Class

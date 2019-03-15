@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class FrmMAmaint
+Partial Class FrmMRmaster
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -53,7 +53,7 @@ Partial Class FrmMAmaint
         Me.UltraGroupBox1.Name = "UltraGroupBox1"
         Me.UltraGroupBox1.Size = New System.Drawing.Size(756, 363)
         Me.UltraGroupBox1.TabIndex = 0
-        Me.UltraGroupBox1.Text = "MA Master File Maintenance"
+        Me.UltraGroupBox1.Text = "Merch Master File Maintenance"
         '
         'UltraLabel7
         '
@@ -113,15 +113,15 @@ Partial Class FrmMAmaint
         Appearance10.BackColor = System.Drawing.SystemColors.Window
         Appearance10.BorderColor = System.Drawing.Color.Silver
         Me.UltraGrid1.DisplayLayout.Override.RowAppearance = Appearance10
-        Me.UltraGrid1.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.[False]
+        Me.UltraGrid1.DisplayLayout.Override.SelectTypeRow = Infragistics.Win.UltraWinGrid.SelectType.[Single]
         Appearance11.BackColor = System.Drawing.SystemColors.ControlLight
         Me.UltraGrid1.DisplayLayout.Override.TemplateAddRowAppearance = Appearance11
         Me.UltraGrid1.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill
         Me.UltraGrid1.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate
         Me.UltraGrid1.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy
-        Me.UltraGrid1.Location = New System.Drawing.Point(27, 47)
+        Me.UltraGrid1.Location = New System.Drawing.Point(83, 38)
         Me.UltraGrid1.Name = "UltraGrid1"
-        Me.UltraGrid1.Size = New System.Drawing.Size(697, 243)
+        Me.UltraGrid1.Size = New System.Drawing.Size(559, 243)
         Me.UltraGrid1.TabIndex = 0
         Me.UltraGrid1.Text = "UltraGrid1"
         '
@@ -149,7 +149,7 @@ Partial Class FrmMAmaint
         Me.UltraBtnExit.TabIndex = 3
         Me.UltraBtnExit.Text = "&Exit"
         '
-        'FrmMAmaint
+        'FrmMRmaster
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -158,8 +158,8 @@ Partial Class FrmMAmaint
         Me.Controls.Add(Me.UltraBtnSelect)
         Me.Controls.Add(Me.UltraBtnAdd)
         Me.Controls.Add(Me.UltraGroupBox1)
-        Me.Name = "FrmMAmaint"
-        Me.Text = "FrmMAmaint"
+        Me.Name = "FrmMRmaster"
+        Me.Text = "FrmMRmaster"
         CType(Me.UltraGroupBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.UltraGroupBox1.ResumeLayout(False)
         CType(Me.UltraGrid1, System.ComponentModel.ISupportInitialize).EndInit()

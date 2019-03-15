@@ -4,9 +4,17 @@ Imports Infragistics.Shared
 
 Public Class FrmDocRouting
     Dim sql As String
+    Dim type As String
+    Dim customerID As String
+    Dim userID As String
+    Dim email As String
+    Dim maName As String
     Dim fflag As Boolean
     Dim pflag As Boolean
     Dim user As String = System.Environment.UserName
+    Dim tt As String
+    Private _r As New Random
+
 
     Private Sub FrmDocRouting_KeyDown(sender As Object, e As System.Windows.Forms.KeyEventArgs) Handles Me.KeyDown
         If e.KeyCode = Keys.Delete Then
@@ -17,6 +25,8 @@ Public Class FrmDocRouting
     End Sub
 
     Private Sub FrmDocRouting_Load(sender As Object, e As System.EventArgs) Handles Me.Load
+        tt = _r.Next 'random number
+        tt = "tsc" & tt 'temp table name
         fflag = False
         set_sql()
         Me.UltraGrid1.DisplayLayout.GroupByBox.Hidden = True
@@ -30,8 +40,24 @@ Public Class FrmDocRouting
     Private Sub setup_grid()
         Me.UltraGrid1.SetDataBinding(db.get_tblECMmast(sql), Nothing)
         Me.UltraGrid1.DataBind()
+        Me.UltraGrid1.Refresh()
+    End Sub
+    Private Sub StoreHeader()
+        type = Me.UltraCombo1.Value
+        customerID = Me.UltraCombo3.Value
+        userID = Me.UltraCombo4.Value
+        email = Me.UltraCombo5.Value
+        maName = Me.UltraCombo6.Value
+    End Sub
+    Private Sub SetHeader()
+        Me.UltraCombo1.Value = type
+        Me.UltraCombo3.Value = customerID
+        Me.UltraCombo4.Value = userID
+        Me.UltraCombo5.Value = email
+        Me.UltraCombo6.Value = maName
     End Sub
     Private Sub reset_grid()
+        StoreHeader()
         Me.UltraCombo1.Value = Nothing
         Me.UltraCombo2.Value = Nothing
         Me.UltraCombo3.Value = Nothing
@@ -39,11 +65,12 @@ Public Class FrmDocRouting
         Me.UltraCombo5.Value = Nothing
         Me.UltraCombo6.Value = Nothing
         fflag = False
-        set_sql()
-        setup_grid()
         set_filter()
+        setup_grid()
+        SetHeader()
+        set_sql()
     End Sub
-   
+
     Private Sub delete_rows()
         If Me.UltraGrid1.Selected.Rows.Count > 0 Then
             Dim r As UltraGridRow
@@ -94,39 +121,46 @@ Public Class FrmDocRouting
         'e.Layout.Bands(0).Columns(8).Hidden = True
         'e.Layout.Bands(0).Columns(9).Hidden = True
         'e.Layout.Bands(0).Columns(10).Hidden = True
-
+        e.Layout.Bands(0).Override.HeaderAppearance.BackColor = Color.LightBlue
+        e.Layout.GroupByBox.Hidden = True
+        e.Layout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.False
+        e.Layout.Override.RowSelectorStyle = Infragistics.Win.HeaderStyle.XPThemed
+        e.Layout.Override.AllowRowFiltering = Infragistics.Win.DefaultableBoolean.False
+        e.Layout.Override.AllowAddNew = AllowAddNew.No
+        e.Layout.Override.SelectTypeRow = SelectType.Default
+        'Me.UltraGrid1.DisplayLayout.Override.AllowDelete = DefaultableBoolean.False
+        e.Layout.Override.AllowUpdate = DefaultableBoolean.False
+        e.Layout.Bands(0).Override.CellClickAction = CellClickAction.RowSelect
     End Sub
     Private Sub set_display()
         Me.UltraGrid1.DisplayLayout.Bands(0).Columns(3).Header.Caption = "Customer ID"
         Me.UltraGrid1.DisplayLayout.Bands(0).Columns(4).Header.Caption = "User ID"
         Me.UltraGrid1.DisplayLayout.Bands(0).Columns(5).Header.Caption = "Recipient Email"
         Me.UltraGrid1.DisplayLayout.Bands(0).Columns(8).Header.Caption = "Merchandiser Name"
+        Me.UltraGrid1.DisplayLayout.Bands(0).Columns(10).Header.Caption = "E-Sig"
+        Me.UltraGrid1.DisplayLayout.Bands(0).Columns(11).Header.Caption = "Reminder"
         'Me.UltraGrid1.DisplayLayout.Bands(0).Columns(7).Header.Caption = "Pct/Batch"
         'Me.UltraGrid1.DisplayLayout.Bands(0).Columns(8).Header.Caption = "Cost/Batch"
         'Me.UltraGrid1.DisplayLayout.Bands(0).Columns(1).Width = 250
         Me.UltraGrid1.DisplayLayout.Bands(0).Columns(5).Width = 250
+        Me.UltraGrid1.DisplayLayout.Bands(0).Columns(9).Width = 50
+        Me.UltraGrid1.DisplayLayout.Bands(0).Columns(10).Width = 50
+        Me.UltraGrid1.DisplayLayout.Bands(0).Columns(11).Width = 50
         'Me.UltraGrid1.DisplayLayout.Override.AllowAddNew = AllowAddNew.Yes
         'Me.UltraGrid1.DisplayLayout.AddNewBox.Hidden = False
         'Me.UltraGrid1.DisplayLayout.Bands(0).Columns(0).CellActivation = Activation.Disabled
-        Me.UltraGrid1.DisplayLayout.GroupByBox.Hidden = True
-        Me.UltraGrid1.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.True
-        Me.UltraGrid1.DisplayLayout.Override.RowSelectorStyle = Infragistics.Win.HeaderStyle.XPThemed
-        Me.UltraGrid1.DisplayLayout.Override.AllowRowFiltering = Infragistics.Win.DefaultableBoolean.False
-        Me.UltraGrid1.DisplayLayout.Override.AllowAddNew = AllowAddNew.No
-        Me.UltraGrid1.DisplayLayout.Override.SelectTypeRow = SelectType.Default
-        'Me.UltraGrid1.DisplayLayout.Override.AllowDelete = DefaultableBoolean.False
-        Me.UltraGrid1.DisplayLayout.Override.AllowUpdate = DefaultableBoolean.False
-        set_col_headers()
+        'Me.UltraGrid1.DisplayLayout.GroupByBox.Hidden = True
+        'Me.UltraGrid1.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.True
+        'Me.UltraGrid1.DisplayLayout.Override.RowSelectorStyle = Infragistics.Win.HeaderStyle.XPThemed
+        'Me.UltraGrid1.DisplayLayout.Override.AllowRowFiltering = Infragistics.Win.DefaultableBoolean.False
+        'Me.UltraGrid1.DisplayLayout.Override.AllowAddNew = AllowAddNew.No
+        'Me.UltraGrid1.DisplayLayout.Override.SelectTypeRow = SelectType.Default
+        ''Me.UltraGrid1.DisplayLayout.Override.AllowDelete = DefaultableBoolean.False
+        'Me.UltraGrid1.DisplayLayout.Override.AllowUpdate = DefaultableBoolean.False
+
     End Sub
 
-    Private Sub set_col_headers()
-        Dim col As UltraGridColumn
-        For Each col In Me.UltraGrid1.DisplayLayout.Bands(0).Columns
-            col.Header.Appearance.ThemedElementAlpha = Alpha.Transparent
-            col.Header.Appearance.BackColor = Color.Black
-            col.Header.Appearance.ForeColor = Color.White
-        Next
-    End Sub
+
     Private Sub UltraBtnExit_Click(sender As System.Object, e As System.EventArgs) Handles UltraBtnExit.Click
         Me.Dispose()
     End Sub
@@ -145,7 +179,7 @@ Public Class FrmDocRouting
         
     End Sub
     Private Sub UltraBtnSelect_Click(sender As System.Object, e As System.EventArgs) Handles UltraBtnSelect.Click
-        If check_rows = 1 Then
+        If check_rows() = 1 Then
             Dim r As UltraGridRow
             r = Me.UltraGrid1.Selected.Rows(0)
             Dim f As New FrmDocRoutingAC(r.Cells(0).Value)
@@ -155,6 +189,7 @@ Public Class FrmDocRouting
                 update_record(f)
             End If
             setup_grid()
+            set_filter()
         End If
     End Sub
     Private Sub insert_record(f As FrmDocRoutingAC)
@@ -220,12 +255,14 @@ Public Class FrmDocRouting
         'rec.Trader = f.UltraGrid2.Selected.Rows(0).Cells(0).Value
         'rec.Trader = f.UltraCombo6.Text
         rec.Pflag = f.UltraComboEditor1.Text
+        rec.ESflag = f.UltraComboEditor2.Text
+        rec.RMflag = f.UltraComboEditor3.Text
         Try
             dc.SubmitChanges()
         Catch ex As Exception
             MessageBox.Show("Update failed contact IT for assistance " & vbCrLf & "Message Code " & ex.Message, "Update Failure (tblRCMmast)", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
         End Try
-        dc.SubmitChanges()
+        'dc.SubmitChanges()
     End Sub
 
     Private Sub UltraBtnFilter_Click(sender As System.Object, e As System.EventArgs) Handles UltraBtnFilter.Click
@@ -262,9 +299,7 @@ Public Class FrmDocRouting
         'Me.UltraCombo6.Rows.Band.Columns(0).Width = "200"
     End Sub
 
-    Private Sub UltraCombo6_InitializeLayout(sender As System.Object, e As Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs) Handles UltraCombo6.InitializeLayout
 
-    End Sub
 
     Private Sub UltraBtnReset_Click(sender As System.Object, e As System.EventArgs) Handles UltraBtnReset.Click
         Me.UltraCombo1.Value = Nothing
@@ -278,7 +313,7 @@ Public Class FrmDocRouting
         setup_grid()
     End Sub
     Public Sub set_sql()
-        sql = "Select Recid,Type,Location,Customer,MA,Recipent,Chgdate,User,Trader,Pflag from tblECMmast where "
+        sql = "Select Recid,Type,Location,Customer,MA,Recipent,Chgdate,User,Trader,Pflag,esflag,rmflag from tblECMmast where "
         If String.IsNullOrEmpty(Me.UltraCombo1.Text) Then
             sql = sql & " type >='" & Me.UltraCombo1.Text & "'"
         Else
@@ -310,7 +345,7 @@ Public Class FrmDocRouting
                     Trader = t.Cells(0).Value
                     Dim rec As New tblECMmast With
                     {.Type = f.UltraCombo1.Value, .Location = f.UltraCombo2.Value, .Customer = f.UltraTextEditor1.Text, _
-                     .MA = MA, .Recipent = f.UltraTextEditor2.Text, .Chgdate = Today, .User = System.Environment.UserName, _
+                     .MA = MA, .Recipent = f.UltraTextEditor2.Text, .ESFlag = f.UltraComboEditor2.Text, .RMFlag = f.UltraComboEditor3.Text, .Chgdate = Today, .User = System.Environment.UserName, _
                      .Trader = Trader, .Pflag = f.UltraComboEditor1.Text}
                     dc.tblECMmasts.InsertOnSubmit(rec)
                     Try
@@ -321,8 +356,8 @@ Public Class FrmDocRouting
                 Next
             Case Else  'others
                 Dim rec As New tblECMmast With
-                    {.Type = f.UltraCombo1.Value, .Location = f.UltraCombo2.Value, .Customer = f.UltraTextEditor1.Text, _
-                     .MA = MA, .Recipent = f.UltraTextEditor2.Text, .Chgdate = Today, .User = System.Environment.UserName, _
+                    {.Type = f.UltraCombo1.Value, .Location = f.UltraCombo2.Value, .Customer = f.UltraTextEditor1.Text,
+                     .MA = MA, .Recipent = f.UltraTextEditor2.Text, .ESflag = f.UltraComboEditor2.Text, .RMflag = f.UltraComboEditor3.Text, .Chgdate = Today, .User = System.Environment.UserName,
                      .Trader = Trader, .Pflag = f.UltraComboEditor1.Text}
                 dc.tblECMmasts.InsertOnSubmit(rec)
                 Try
@@ -334,12 +369,13 @@ Public Class FrmDocRouting
     End Sub
 
     Private Sub UltraButton1_Click(sender As System.Object, e As System.EventArgs) Handles UltraButton1.Click
+        Dim dc As New DataClasses1DataContext
         If Me.UltraGrid1.Selected.Rows.Count > 0 Then
             Dim rc As Integer = Me.UltraGrid1.Selected.Rows.Count
             Dim rr As Integer = Me.UltraGrid1.Selected.Rows(0).Index 'first selected row
             post_requested_changes()
             If pflag = False Then
-                Dim f As New FrmDocRoutingCM()
+                Dim f As New FrmDocRoutingCM(tt)
                 f.ShowDialog()
                 If f.DialogResult = Windows.Forms.DialogResult.OK Then
                     'update db
@@ -352,24 +388,24 @@ Public Class FrmDocRouting
                 '    rr += 1
                 'Next
             End If
+            dc.sp_drop_mast_change(tt)
         End If
-
     End Sub
     Public Sub post_requested_changes()
         Dim dc As New DataClasses1DataContext
         'dc.ExecuteCommand("truncate table ECMmast_change")
-        dc.sp_create_mast_change(user)
+        dc.sp_create_mast_change(tt)
         Dim ptype As String = Me.UltraGrid1.Selected.Rows(0).Cells("type").Value
         pflag = False 'error flag for multiple document types
         Dim r As UltraGridRow
         For Each r In UltraGrid1.Selected.Rows
-            If ptype <> r.Cells("Type").Value Then
-                MessageBox.Show("Only one document type may be changed per request, please reselect.", "Multiple Document Types", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-                pflag = True
-                Exit Sub
-            End If
+            'If ptype <> r.Cells("Type").Value Then
+            '    MessageBox.Show("Only one document type may be changed per request, please reselect.", "Multiple Document Types", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            '    pflag = True
+            '    Exit Sub
+            'End If
             Try
-                db.insert_ecm_change(r, user)
+                db.insert_ecm_change(r, user, tt)
             Catch ex As Exception
                 MessageBox.Show("Insert failed contact IT for assistance " & vbCrLf & "Message Code " & ex.Message, "Insert Failure (tblECMmprcntl2)", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             End Try
@@ -384,6 +420,7 @@ Public Class FrmDocRouting
             '    MessageBox.Show("Insert failed contact IT for assistance " & vbCrLf & "Message Code " & ex.Message, "Insert Failure (tblECMmprcntl2)", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             'End Try
         Next
+
     End Sub
     Private Function check_rows() As Integer
         If Me.UltraGrid1.Selected.Rows.Count > 1 Then
@@ -391,5 +428,8 @@ Public Class FrmDocRouting
         End If
         Return Me.UltraGrid1.Selected.Rows.Count
     End Function
+    
+
+    
 End Class
 

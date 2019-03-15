@@ -2,8 +2,11 @@
 Imports Infragistics.Win
 Imports Infragistics.Shared
 Imports System.Text.RegularExpressions
+Imports System.Net.Mail
+
 Public Class FrmDocRoutingAC
     Private a_rec As Integer
+    Private a_key As String
     Dim eflag As Boolean
     Dim appid As String = "FrmDocRoutingAC"
 
@@ -16,15 +19,15 @@ Public Class FrmDocRoutingAC
         setup_grid()
         set_display()
         Select Case a_rec
-            Case Is = 0  'add
+            Case Is = 0   'add
                 Me.UltraLabel1.Text = "Add Mode"
                 init_panel()
-            Case Is > 0  'update
+            Case Is > 0      'update
                 Me.UltraLabel1.Text = "Change Mode"
                 update_panel()
                 Me.UltraGrid1.DisplayLayout.Override.SelectTypeRow = SelectType.Single
                 Me.UltraGrid2.DisplayLayout.Override.SelectTypeRow = SelectType.Single
-                Me.UltraCombo1.Enabled = False
+                'Me.UltraCombo1.Enabled = False
         End Select
     End Sub
     Private Sub UltraBtnOK_Click(sender As System.Object, e As System.EventArgs) Handles UltraBtnOK.Click
@@ -117,13 +120,13 @@ Public Class FrmDocRoutingAC
             End If
         Next
         'check customer confirmation
-        Dim msg As tblECMhelpcontact = ops.get_helpcontact(appid) 'contact info
-        If ops.check_confirmation(Me.UltraTextEditor1.Text) = 0 Then
-            MessageBox.Show("Customer Confirmation record not on file" & vbCrLf & "Please verify " & _
-                msg.Contact, "Customer Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-            eflag = True
-            Exit Sub
-        End If
+        'Dim msg As tblECMhelpcontact = ops.get_helpcontact(appid) 'contact info
+        'If ops.check_confirmation(Me.UltraTextEditor1.Text) = 0 Then
+        '    MessageBox.Show("Customer Confirmation record not on file" & vbCrLf & "Please verify " & _
+        '        msg.Contact, "Customer Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+        '    eflag = True
+        '    Exit Sub
+        'End If
     End Sub
     Public Sub init_panel()
         Me.UltraCombo1.Value = Nothing
@@ -133,6 +136,11 @@ Public Class FrmDocRoutingAC
         Me.UltraTextEditor2.Value = Nothing
         Me.UltraCombo6.Value = Nothing
         Me.UltraComboEditor1.Value = "P"
+        Me.UltraComboEditor1.Text = "P"
+        Me.UltraComboEditor2.Value = "N"
+        Me.UltraComboEditor2.Text = "N"
+        Me.UltraComboEditor3.Value = "N"
+        Me.UltraComboEditor3.Text = "N"
         Me.UltraTextEditor3.Enabled = False
         Me.UltraTextEditor4.Enabled = False
     End Sub
@@ -143,52 +151,35 @@ Public Class FrmDocRoutingAC
         Me.UltraGrid2.DataBind()
     End Sub
     Private Sub UltraGrid1_InitializeLayout(ByVal sender As Object, ByVal e As Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs) Handles UltraGrid1.InitializeLayout
-        'e.Layout.Bands(0).Columns(0).Hidden = True
-        'e.Layout.Bands(0).Columns(1).Hidden = True
-        'e.Layout.Bands(0).Columns(2).Hidden = True
-        'e.Layout.Bands(0).Columns(3).Hidden = True
-        'e.Layout.Bands(0).Columns(4).Hidden = True
-        'e.Layout.Bands(0).Columns(5).Hidden = True
-        'e.Layout.Bands(0).Columns(6).Hidden = True
-        'e.Layout.Bands(0).Columns(7).Hidden = True
-        'e.Layout.Bands(0).Columns(8).Hidden = True
-        'e.Layout.Bands(0).Columns(9).Hidden = True
-        'e.Layout.Bands(0).Columns(10).Hidden = True
-
+        'e.Layout.Bands(0).Override.HeaderAppearance.BackColor = Color.LightBlue
+        e.Layout.GroupByBox.Hidden = True
+        e.Layout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.False
+        e.Layout.Override.RowSelectorStyle = Infragistics.Win.HeaderStyle.XPThemed
+        e.Layout.Override.AllowRowFiltering = Infragistics.Win.DefaultableBoolean.False
+        e.Layout.Override.AllowAddNew = AllowAddNew.No
+        e.Layout.Override.SelectTypeRow = SelectType.Default
+        e.Layout.Override.AllowUpdate = DefaultableBoolean.False
+        e.Layout.Bands(0).Override.CellClickAction = CellClickAction.RowSelect
+    End Sub
+    Private Sub UltraGrid2_InitializeLayout(sender As Object, e As InitializeLayoutEventArgs) Handles UltraGrid2.InitializeLayout
+        'e.Layout.Bands(0).Override.HeaderAppearance.BackColor = Color.LightBlue
+        e.Layout.GroupByBox.Hidden = True
+        e.Layout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.False
+        e.Layout.Override.RowSelectorStyle = Infragistics.Win.HeaderStyle.XPThemed
+        e.Layout.Override.AllowRowFiltering = Infragistics.Win.DefaultableBoolean.False
+        e.Layout.Override.AllowAddNew = AllowAddNew.No
+        e.Layout.Override.SelectTypeRow = SelectType.Default
+        e.Layout.Override.AllowUpdate = DefaultableBoolean.False
+        e.Layout.Bands(0).Override.CellClickAction = CellClickAction.RowSelect
     End Sub
     Private Sub set_display()
         With UltraGrid1
             .DisplayLayout.Bands(0).Columns(0).Header.Caption = "User ID"
-            'Me.UltraGrid1.DisplayLayout.Bands(0).Columns(1).Width = 250
-            'Me.UltraGrid1.DisplayLayout.Override.AllowAddNew = AllowAddNew.Yes
-            'Me.UltraGrid1.DisplayLayout.AddNewBox.Hidden = False
-            'Me.UltraGrid1.DisplayLayout.Bands(0).Columns(0).CellActivation = Activation.Disabled
-            .DisplayLayout.GroupByBox.Hidden = True
-            .DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.True
-            .DisplayLayout.Override.RowSelectorStyle = Infragistics.Win.HeaderStyle.XPThemed
-            .DisplayLayout.Override.AllowRowFiltering = Infragistics.Win.DefaultableBoolean.False
-            .DisplayLayout.Override.AllowAddNew = AllowAddNew.No
-            .DisplayLayout.Override.SelectTypeRow = SelectType.Extended
-            .DisplayLayout.Override.AllowUpdate = DefaultableBoolean.False
-            'Me.UltraGrid1.DisplayLayout.Override.AllowDelete = DefaultableBoolean.False
-            'Me.UltraGrid1.DisplayLayout.Override.AllowUpdate = DefaultableBoolean.False
             set_col_headers(Me.UltraGrid1)
         End With
         With UltraGrid2
             .DisplayLayout.Bands(0).Columns(0).Header.Caption = "Merchandiser Name"
             .DisplayLayout.Bands(0).Columns(0).Width = 250
-            'Me.UltraGrid1.DisplayLayout.Override.AllowAddNew = AllowAddNew.Yes
-            'Me.UltraGrid1.DisplayLayout.AddNewBox.Hidden = False
-            'Me.UltraGrid1.DisplayLayout.Bands(0).Columns(0).CellActivation = Activation.Disabled
-            .DisplayLayout.GroupByBox.Hidden = True
-            .DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.True
-            .DisplayLayout.Override.RowSelectorStyle = Infragistics.Win.HeaderStyle.XPThemed
-            .DisplayLayout.Override.AllowRowFiltering = Infragistics.Win.DefaultableBoolean.False
-            .DisplayLayout.Override.AllowAddNew = AllowAddNew.No
-            .DisplayLayout.Override.SelectTypeRow = SelectType.Extended
-            .DisplayLayout.Override.AllowUpdate = DefaultableBoolean.False
-            'Me.UltraGrid1.DisplayLayout.Override.AllowDelete = DefaultableBoolean.False
-            'Me.UltraGrid1.DisplayLayout.Override.AllowUpdate = DefaultableBoolean.False
             set_col_headers(Me.UltraGrid2)
         End With
     End Sub
@@ -205,7 +196,9 @@ Public Class FrmDocRoutingAC
     Private Sub UltraCombo1_RowSelected(sender As Object, e As Infragistics.Win.UltraWinGrid.RowSelectedEventArgs) Handles UltraCombo1.RowSelected
         Me.UltraTextEditor3.Enabled = False
         Me.UltraCombo2.Enabled = True 'enable location
-        'Me.UltraTextEditor4.Enabled = True
+        Me.UltraComboEditor2.Enabled = True
+        Me.UltraComboEditor3.Enabled = True
+        Me.UltraTextEditor4.Enabled = False
         'If Me.UltraCombo1.Value = "CP" Then 'Or Me.UltraCombo1.Value = "CC"
         '    'Me.UltraCombo4.Enabled = False
         '    'Me.UltraCombo4.Value = "          "
@@ -213,18 +206,21 @@ Public Class FrmDocRoutingAC
         '    Exit Sub
         'End If
         Select Case Me.UltraCombo1.Value
-            Case "FS", "CC", "CO", "DE"
+            Case "FS", "CO"
                 Me.UltraTextEditor3.Enabled = True
         End Select
         If Me.UltraCombo1.Value = "CO" And a_rec = 0 Then 'restrict access for add
             Me.UltraTextEditor3.Enabled = False
         End If
         Select Case Me.UltraCombo1.Value
-            Case "CO", "CP"
+            Case "CO"
                 Me.UltraTextEditor4.Enabled = True
                 ' Me.UltraTextEditor4.Value = ""
         End Select
-        
+        If Me.UltraCombo1.Value = "FS" Then
+            Me.UltraComboEditor2.Enabled = False
+            Me.UltraComboEditor3.Enabled = False
+        End If
         'If Me.UltraCombo1.Value = "FS" Then
         'Me.UltraCombo6.Enabled = False
         'Me.UltraCombo6.Value = "          "
@@ -242,26 +238,37 @@ Public Class FrmDocRoutingAC
         Me.UltraComboEditor1.Text = R.Pflag.ToString
         Me.UltraTextEditor3.Text = R.MA
         Me.UltraTextEditor4.Text = R.Trader
+        Me.UltraComboEditor2.Text = R.ESFlag
+        Me.UltraComboEditor3.Text = R.RMflag
         set_grid_values(R.MA, R.Trader)
     End Sub
 
     Public Sub change_case()
-        Dim cControl As Control
-        For Each cControl In Me.UltraGroupBox1.Controls
-            If (TypeOf cControl Is Infragistics.Win.UltraWinEditors.UltraTextEditor) Then
-                cControl.Text = cControl.Text.ToUpper
-            End If
-            If (TypeOf cControl Is Infragistics.Win.UltraWinGrid.UltraCombo) Then
-                cControl.Text = cControl.Text.ToUpper
-            End If
-        Next
+        Me.UltraTextEditor1.Text = Me.UltraTextEditor1.Text.ToUpper
+        Me.UltraTextEditor2.Text = Me.UltraTextEditor2.Text.ToUpper
+        Me.UltraTextEditor4.Text = Me.UltraTextEditor4.Text.ToUpper
+        'Dim cControl As Control
+        'For Each cControl In Me.UltraGroupBox1.Controls
+        '    If (TypeOf cControl Is Infragistics.Win.UltraWinEditors.UltraTextEditor) Then
+        '        cControl.Text = cControl.Text.ToUpper
+        '    End If
+        '    If (TypeOf cControl Is Infragistics.Win.UltraWinGrid.UltraCombo) Then
+        '        cControl.Text = cControl.Text.ToUpper
+        '    End If
+        'Next
     End Sub
     Public Function check_email(ea As String) As Boolean
-        Dim pattern As String = "^[a-zA-Z][\w\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$"
+        'dfd01 changed edit for email format
+        Try
+            Dim tea As String = New MailAddress(ea).Address
+        Catch ex As Exception
+            Return False
+        End Try
+        'Dim pattern As String = "^[a-zA-Z][\w\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$"
         'Dim pattern As String = "\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*([,;]\s*\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*)*"
-        Dim emailAddressMatch As Match = Regex.Match(ea, pattern)
+        'Dim emailAddressMatch As Match = Regex.Match(ea, pattern)
         'Show result
-        If Not emailAddressMatch.Success Then Return False
+        'If Not emailAddressMatch.Success Then Return False
         Return True
     End Function
     
@@ -318,4 +325,6 @@ Public Class FrmDocRoutingAC
             End If
         Next
     End Sub
+
+
 End Class

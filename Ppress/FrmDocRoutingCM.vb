@@ -2,19 +2,27 @@
 Imports Infragistics.Win
 Imports Infragistics.Shared
 Imports System.Text.RegularExpressions
+Imports System.Net.Mail
+
 Public Class FrmDocRoutingCM
     Private grid As UltraGrid
     Dim eflag As Boolean
     Dim appid As String = "FrmDocRoutingCM"
     Dim user As String = System.Environment.UserName
-    Public Sub New()
+    Dim tt As String
+
+    Public Sub New(t As String)
         ' This call is required by the designer.
         InitializeComponent()
         setup_panel()
+        tt = t
+        If user.Length > 20 Then
+            user = user.Substring(1, 20) '20 characters
+        End If
         ' Add any initialization after the InitializeComponent() call.
     End Sub
     Private Sub setup_grid()
-        Me.UltraGrid1.SetDataBinding(db.get_ecm_change(user), Nothing)
+        Me.UltraGrid1.SetDataBinding(db.get_ecm_change(tt), Nothing)
         Me.UltraGrid1.DataBind()
     End Sub
 
@@ -41,7 +49,7 @@ Public Class FrmDocRoutingCM
         'e.Layout.Bands(0).Columns(5).Hidden = True
         e.Layout.Bands(0).Columns(6).Hidden = True
         e.Layout.Bands(0).Columns(7).Hidden = True
-        e.Layout.Bands(0).Columns(10).Hidden = True
+        e.Layout.Bands(0).Columns(12).Hidden = True
         ' e.Layout.Bands(0).Columns(8).Hidden = True
         'e.Layout.Bands(0).Columns(8).Hidden = True
         'e.Layout.Bands(0).Columns(9).Hidden = True
@@ -52,7 +60,8 @@ Public Class FrmDocRoutingCM
             .DisplayLayout.Bands(0).Columns(3).Header.Caption = "Customer ID"
             .DisplayLayout.Bands(0).Columns(4).Header.Caption = "User ID"
             .DisplayLayout.Bands(0).Columns(5).Header.Caption = "Recipient Email"
-            .DisplayLayout.Bands(0).Columns(8).Header.Caption = "Merchandiser Name"
+            .DisplayLayout.Bands(0).Columns(10).Header.Caption = "E-Sig"
+            .DisplayLayout.Bands(0).Columns(11).Header.Caption = "Remind"
             'Me.UltraGrid1.DisplayLayout.Bands(0).Columns(7).Header.Caption = "Pct/Batch"
             'Me.UltraGrid1.DisplayLayout.Bands(0).Columns(8).Header.Caption = "Cost/Batch"
             'Me.UltraGrid1.DisplayLayout.Bands(0).Columns(1).Width = 250
@@ -85,7 +94,7 @@ Public Class FrmDocRoutingCM
 
     Private Sub UltraBtnCancel_Click(sender As System.Object, e As System.EventArgs) Handles UltraBtnCancel.Click
         Dim dc As New DataClasses1DataContext
-        dc.sp_drop_mast_change(user) 'drop table
+        dc.sp_drop_mast_change(tt) 'drop table
         Me.DialogResult = Windows.Forms.DialogResult.Cancel
         Me.Dispose()
     End Sub
@@ -95,12 +104,12 @@ Public Class FrmDocRoutingCM
             edit_data()
             If eflag = False Then
                 Select Case Me.UltraOptionSet1.CheckedIndex
-                    Case Is = 0   'process change request
+                    Case Is = 1   'process change request
                         'process change 
                         If MessageBox.Show("Change " & Me.UltraGrid1.Rows.Count & " rows", "Confirm Change", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
                             process_change()
                         End If
-                    Case Is = 1   'process copy request
+                    Case Is = 0   'process copy request
                         If MessageBox.Show("Copy " & Me.UltraGrid1.Rows.Count & " rows", "Confirm Copy", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
                             process_copy()
                         End If
@@ -109,7 +118,7 @@ Public Class FrmDocRoutingCM
             End If
         End If
         Dim dc As New DataClasses1DataContext
-        dc.sp_drop_mast_change(user) 'drop table
+        dc.sp_drop_mast_change(tt) 'drop table
     End Sub
     Sub setup_panel()
         Dim tt1 As New UltraWinToolTip.UltraToolTipInfo
@@ -140,6 +149,8 @@ Public Class FrmDocRoutingCM
         Me.UltraComboEditor2.Text = "*"
         Me.UltraComboEditor3.Text = "*"
         Me.UltraComboEditor1.Text = "*"
+        Me.UltraComboEditor4.Text = "*"
+        Me.UltraComboEditor5.Text = "*"
         Select Case type
             Case "FS", "CC"
                 Me.UltraComboEditor3.Enabled = False
@@ -180,8 +191,15 @@ Public Class FrmDocRoutingCM
             If Not Me.UltraComboEditor1.Text = "*" Then
                 rec.Pflag = Me.UltraComboEditor1.Text
             End If
+            If Not Me.UltraComboEditor4.Text = "*" Then
+                rec.ESflag = Me.UltraComboEditor4.Text
+            End If
+            If Not Me.UltraComboEditor5.Text = "*" Then
+                rec.RMFlag = Me.UltraComboEditor5.Text
+            End If
             rec.Chgdate = Today
-            rec.User = System.Environment.UserName
+            rec.User = user
+            'If Not db.check_ecmmast(rec.Type, rec.Location, rec.Customer, rec.MA, rec.Recipent, rec.Trader) Then 'check existing row
             Try
                 dc.SubmitChanges()
             Catch ex As Exception
@@ -189,6 +207,7 @@ Public Class FrmDocRoutingCM
                 Me.DialogResult = Windows.Forms.DialogResult.Cancel
                 Exit Sub
             End Try
+            'End If
         Next
     End Sub
     Public Sub process_copy()
@@ -233,17 +252,28 @@ Public Class FrmDocRoutingCM
             Else
                 rec.Pflag = r.Cells("Pflag").Text
             End If
+            If Not Me.UltraComboEditor4.Text = "*" Then
+                rec.ESFlag = Me.UltraComboEditor4.Text
+            Else
+                rec.ESFlag = r.Cells("esflag").Text
+            End If
+            If Not Me.UltraComboEditor5.Text = "*" Then
+                rec.RMFlag = Me.UltraComboEditor5.Text
+            Else
+                rec.RMFlag = r.Cells("esflag").Text
+            End If
             rec.Chgdate = Today
-            rec.User = System.Environment.UserName
-            dc.tblECMmasts.InsertOnSubmit(rec)
-
-            Try
-                dc.SubmitChanges()
-            Catch ex As Exception
-                MessageBox.Show("Insert failed contact IT for assistance " & vbCrLf & "Message Code " & ex.Message, "Insert Failure (tblECMMast)", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-                Me.DialogResult = Windows.Forms.DialogResult.Cancel
-                Exit Sub
-            End Try
+            rec.User = user
+            If Not db.check_ecmmast(rec.Type, rec.Location, rec.Customer, rec.MA, rec.Recipent, rec.Trader) Then 'check existing row
+                dc.tblECMmasts.InsertOnSubmit(rec)
+                Try
+                    dc.SubmitChanges()
+                Catch ex As Exception
+                    MessageBox.Show("Insert failed contact IT for assistance " & vbCrLf & "Message Code " & ex.Message, "Insert Failure (tblECMMast)", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                    Me.DialogResult = Windows.Forms.DialogResult.Cancel
+                    Exit Sub
+                End Try
+            End If
         Next
     End Sub
     
@@ -254,6 +284,8 @@ Public Class FrmDocRoutingCM
             Me.UltraComboEditor2.Text = "*" And _
             Me.UltraTextEditor2.Text = "*" And _
             Me.UltraComboEditor3.Text = "*" And _
+             Me.UltraComboEditor4.Text = "*" And _
+             Me.UltraComboEditor5.Text = "*" And _
             Me.UltraComboEditor1.Text = "*" Then
             MessageBox.Show("At least one value must be selected for copy/change", "Missing Selection", MessageBoxButtons.OK)
             eflag = True
@@ -315,25 +347,33 @@ Public Class FrmDocRoutingCM
             Next
         End If
         'check customer confirmation
-        If Me.UltraTextEditor1.Text <> "*" Then
-            Dim msg As tblECMhelpcontact = ops.get_helpcontact(appid) 'contact info
-            If ops.check_confirmation(Me.UltraTextEditor1.Text) = 0 Then
-                MessageBox.Show("Customer Confirmation record not on file" & vbCrLf & "Please verify " & _
-                    msg.Contact, "Customer Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-                eflag = True
-                Exit Sub
-            End If
-        End If
+        'If Me.UltraTextEditor1.Text <> "*" Then
+        '    Dim msg As tblECMhelpcontact = ops.get_helpcontact(appid) 'contact info
+        '    If ops.check_confirmation(Me.UltraTextEditor1.Text) = 0 Then
+        '        MessageBox.Show("Customer Confirmation record not on file" & vbCrLf & "Please verify " & _
+        '            msg.Contact, "Customer Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+        '        eflag = True
+        '        Exit Sub
+        '    End If
+        'End If
 
     End Sub
     Public Function check_email(ea As String) As Boolean
-        Dim pattern As String = "^[a-zA-Z][\w\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$"
-        'Dim pattern As String = "\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*([,;]\s*\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*)*"
-        Dim emailAddressMatch As Match = Regex.Match(ea, pattern)
-        'Show result
-        If Not emailAddressMatch.Success Then Return False
+        Try
+            Dim tea As String = New MailAddress(ea).Address
+        Catch ex As Exception
+            Return False
+        End Try
+        'Dim pattern As String = "^[a-zA-Z][\w\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$"
+        ''Dim pattern As String = "\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*([,;]\s*\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*)*"
+        'Dim emailAddressMatch As Match = Regex.Match(ea, pattern)
+        ''Show result
+        'If Not emailAddressMatch.Success Then Return False
+        'Return True
         Return True
     End Function
 
-   
+    Private Sub UltraOptionSet1_ValueChanged(sender As Object, e As EventArgs) Handles UltraOptionSet1.ValueChanged
+
+    End Sub
 End Class

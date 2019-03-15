@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -14,8 +14,9 @@
     <AssemblyName>Ppress</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <SccProjectName>
     </SccProjectName>
@@ -49,6 +50,7 @@
     <OutputPath>bin\Debug\</OutputPath>
     <DocumentationFile>Ppress.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -59,6 +61,7 @@
     <OutputPath>bin\Release\</OutputPath>
     <DocumentationFile>Ppress.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <OptionExplicit>On</OptionExplicit>
@@ -140,10 +143,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\Infragistics\NetAdvantage 2010.3\Windows Forms\Bin\Infragistics2.Win.UltraWinInkProvider.Ink17.v10.3.dll</HintPath>
     </Reference>
-    <Reference Include="Infragistics2.Win.UltraWinInkProvider.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\Infragistics\NetAdvantage 2010.3\Windows Forms\Bin\Infragistics2.Win.UltraWinInkProvider.v10.3.dll</HintPath>
-    </Reference>
     <Reference Include="Infragistics2.Win.UltraWinListBar.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\Infragistics\NetAdvantage 2010.3\Windows Forms\Bin\Infragistics2.Win.UltraWinListBar.v10.3.dll</HintPath>
@@ -200,8 +199,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\Infragistics\NetAdvantage 2010.3\Windows Forms\Bin\Infragistics2.Win.UltraWinGrid.ExcelExport.v10.3.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
@@ -228,8 +231,39 @@
     <Compile Include="ApplicationEvents.vb" />
     <Compile Include="Classes\Cls_ECMmast.vb" />
     <Compile Include="Classes\db.vb" />
+    <Compile Include="Classes\ecmdb.vb" />
     <Compile Include="Classes\ops.vb" />
     <Compile Include="Classes\Schema.vb" />
+    <Compile Include="FrmMobCust.Designer.vb">
+      <DependentUpon>FrmMobCust.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMobCust.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMobCustomerEmailAC.Designer.vb">
+      <DependentUpon>FrmMobCustomerEmailAC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMobCustomerEmailAC.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMobCustomerXrefAC.Designer.vb">
+      <DependentUpon>FrmMobCustomerXrefAC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMobCustomerXrefAC.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMRmasterAC.Designer.vb">
+      <DependentUpon>FrmMRmasterAC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMRmasterAC.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMRmaster.Designer.vb">
+      <DependentUpon>FrmMRmaster.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMRmaster.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmPrinter_SettngsAC.Designer.vb">
       <DependentUpon>FrmPrinter_SettngsAC.vb</DependentUpon>
     </Compile>
@@ -358,6 +392,13 @@
     <Compile Include="FrmUpdateAS400.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FrmMobCustomerUserAC.Designer.vb">
+      <DependentUpon>FrmMobCustomerUserAC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMobCustomerUserAC.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HTTP.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -373,11 +414,88 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="PpressDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PpressDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="PpressDataSet1.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PpressDataSet1.xsd</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="obj\x86\Debug\Ppress.FrmAbout.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\Ppress.FrmCustConf.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\Ppress.FrmCustConfAC.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\Ppress.FrmDocRouting.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\Ppress.FrmDocRoutingAC.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\Ppress.FrmDocRoutingCM.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\Ppress.FrmEcoSign.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\Ppress.FrmEcoSignAC.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\Ppress.FrmMainMenu.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\Ppress.FrmMAmaint.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\Ppress.FrmMAmaintAC.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\Ppress.FrmMobCust.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\Ppress.FrmMobCustomerUserAC.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\Ppress.FrmMRmaster.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\Ppress.FrmMRmasterAC.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\Ppress.FrmPrcntl2.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\Ppress.FrmPrcntl2AC.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\Ppress.FrmPrcntl2CM.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\Ppress.FrmPrcntl3.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\Ppress.FrmPrcntl3AC.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\Ppress.FrmPrcntl3CM.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\Ppress.FrmPrinter_Settings.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\Ppress.FrmPrinter_SettingsAC.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\Ppress.FrmUpdateAS400.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\Ppress.Resources.resources" />
+    <None Include="backup\Classes\db.vb.bkp" />
+    <None Include="backup\Classes\ops.vb.bkp" />
+    <None Include="backup\FrmCustConf.vb.bkp" />
+    <None Include="backup\FrmCustConfAC.vb.bkp" />
+    <None Include="backup\FrmDocRouting.vb.bkp" />
+    <None Include="backup\FrmDocRoutingAC.vb.bkp" />
+    <None Include="backup\FrmDocRoutingCM.vb.bkp" />
+    <None Include="backup\FrmEcoSign.vb.bkp" />
+    <None Include="backup\FrmEcoSignAC.vb.bkp" />
+    <None Include="backup\FrmMainMenu.vb.bkp" />
+    <None Include="backup\FrmMAmaint.vb.bkp" />
+    <None Include="backup\FrmMAmaintAC.vb.bkp" />
+    <None Include="backup\FrmPrcntl2.vb.bkp" />
+    <None Include="backup\FrmPrcntl2AC.vb.bkp" />
+    <None Include="backup\FrmPrcntl2CM.vb.bkp" />
+    <None Include="backup\FrmPrcntl3.vb.bkp" />
+    <None Include="backup\FrmPrcntl3AC.vb.bkp" />
+    <None Include="backup\FrmPrcntl3CM.vb.bkp" />
+    <None Include="backup\FrmPrinter_Settings.vb.bkp" />
+    <None Include="backup\FrmPrinter_SettngsAC.vb.bkp" />
+    <None Include="backup\FrmUpdateAS400.vb.bkp" />
+    <None Include="backup\My Project\licenses.licx.bkp" />
+    <None Include="backup\Ppress.vbproj.bkp" />
+    <None Include="bin\Debug\Ppress.exe.config" />
+    <None Include="bin\Debug\Ppress.vshost.exe.config" />
+    <None Include="bin\Debug\Ppress.vshost.exe.manifest" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="DataClasses1.dbml.layout">
       <DependentUpon>DataClasses1.dbml</DependentUpon>
     </None>
+    <EmbeddedResource Include="FrmMobCust.resx">
+      <DependentUpon>FrmMobCust.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMobCustomerEmailAC.resx">
+      <DependentUpon>FrmMobCustomerEmailAC.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMobCustomerXrefAC.resx">
+      <DependentUpon>FrmMobCustomerXrefAC.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMRmasterAC.resx">
+      <DependentUpon>FrmMRmasterAC.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMRmaster.resx">
+      <DependentUpon>FrmMRmaster.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmPrinter_SettngsAC.resx">
       <DependentUpon>FrmPrinter_SettngsAC.vb</DependentUpon>
     </EmbeddedResource>
@@ -438,6 +556,9 @@
     <EmbeddedResource Include="FrmUpdateAS400.resx">
       <DependentUpon>FrmUpdateAS400.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmMobCustomerUserAC.resx">
+      <DependentUpon>FrmMobCustomerUserAC.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\licenses.licx" />
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -445,6 +566,36 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <None Include="obj\x86\Debug\CoreCompileInputs.cache" />
+    <None Include="obj\x86\Debug\DesignTimeResolveAssemblyReferences.cache" />
+    <None Include="obj\x86\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\x86\Debug\Ppress.vbproj.CopyComplete" />
+    <None Include="obj\x86\Debug\Ppress.vbproj.CoreCompileInputs.cache" />
+    <None Include="obj\x86\Debug\Ppress.vbproj.GenerateResource.cache" />
+    <None Include="obj\x86\Debug\Ppress.vbprojResolveAssemblyReference.cache" />
+    <None Include="packages.config" />
+    <None Include="PpressDataSet.xsc">
+      <DependentUpon>PpressDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="PpressDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PpressDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PpressDataSet.xss">
+      <DependentUpon>PpressDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="PpressDataSet1.xsc">
+      <DependentUpon>PpressDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="PpressDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PpressDataSet1.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PpressDataSet1.xss">
+      <DependentUpon>PpressDataSet1.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -490,7 +641,118 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\Debug\Infragistics2.Documents.v10.3.dll" />
+    <Content Include="bin\Debug\Infragistics2.Documents.v10.3.xml" />
+    <Content Include="bin\Debug\Infragistics2.Excel.v10.3.dll" />
+    <Content Include="bin\Debug\Infragistics2.Excel.v10.3.xml" />
+    <Content Include="bin\Debug\Infragistics2.Shared.v10.3.dll" />
+    <Content Include="bin\Debug\Infragistics2.Shared.v10.3.xml" />
+    <Content Include="bin\Debug\Infragistics2.Win.AppStylistSupport.v10.3.dll" />
+    <Content Include="bin\Debug\Infragistics2.Win.AppStylistSupport.v10.3.xml" />
+    <Content Include="bin\Debug\Infragistics2.Win.Misc.v10.3.dll" />
+    <Content Include="bin\Debug\Infragistics2.Win.Misc.v10.3.xml" />
+    <Content Include="bin\Debug\Infragistics2.Win.SupportDialogs.v10.3.dll" />
+    <Content Include="bin\Debug\Infragistics2.Win.SupportDialogs.v10.3.xml" />
+    <Content Include="bin\Debug\Infragistics2.Win.UltraWinCalcManager.v10.3.dll" />
+    <Content Include="bin\Debug\Infragistics2.Win.UltraWinCalcManager.v10.3.FormulaBuilder.dll" />
+    <Content Include="bin\Debug\Infragistics2.Win.UltraWinCalcManager.v10.3.FormulaBuilder.xml" />
+    <Content Include="bin\Debug\Infragistics2.Win.UltraWinCalcManager.v10.3.xml" />
+    <Content Include="bin\Debug\Infragistics2.Win.UltraWinChart.v10.3.dll" />
+    <Content Include="bin\Debug\Infragistics2.Win.UltraWinChart.v10.3.xml" />
+    <Content Include="bin\Debug\Infragistics2.Win.UltraWinDataSource.v10.3.dll" />
+    <Content Include="bin\Debug\Infragistics2.Win.UltraWinDataSource.v10.3.xml" />
+    <Content Include="bin\Debug\Infragistics2.Win.UltraWinDock.v10.3.dll" />
+    <Content Include="bin\Debug\Infragistics2.Win.UltraWinDock.v10.3.xml" />
+    <Content Include="bin\Debug\Infragistics2.Win.UltraWinEditors.v10.3.dll" />
+    <Content Include="bin\Debug\Infragistics2.Win.UltraWinEditors.v10.3.xml" />
+    <Content Include="bin\Debug\Infragistics2.Win.UltraWinExplorerBar.v10.3.dll" />
+    <Content Include="bin\Debug\Infragistics2.Win.UltraWinExplorerBar.v10.3.xml" />
+    <Content Include="bin\Debug\Infragistics2.Win.UltraWinGanttView.v10.3.dll" />
+    <Content Include="bin\Debug\Infragistics2.Win.UltraWinGanttView.v10.3.xml" />
+    <Content Include="bin\Debug\Infragistics2.Win.UltraWinGauge.v10.3.dll" />
+    <Content Include="bin\Debug\Infragistics2.Win.UltraWinGauge.v10.3.xml" />
+    <Content Include="bin\Debug\Infragistics2.Win.UltraWinGrid.DocumentExport.v10.3.dll" />
+    <Content Include="bin\Debug\Infragistics2.Win.UltraWinGrid.DocumentExport.v10.3.xml" />
+    <Content Include="bin\Debug\Infragistics2.Win.UltraWinGrid.ExcelExport.v10.3.dll" />
+    <Content Include="bin\Debug\Infragistics2.Win.UltraWinGrid.ExcelExport.v10.3.xml" />
+    <Content Include="bin\Debug\Infragistics2.Win.UltraWinGrid.v10.3.dll" />
+    <Content Include="bin\Debug\Infragistics2.Win.UltraWinGrid.v10.3.xml" />
+    <Content Include="bin\Debug\Infragistics2.Win.UltraWinInkProvider.Ink17.v10.3.dll" />
+    <Content Include="bin\Debug\Infragistics2.Win.UltraWinInkProvider.Ink17.v10.3.xml" />
+    <Content Include="bin\Debug\Infragistics2.Win.UltraWinListBar.v10.3.dll" />
+    <Content Include="bin\Debug\Infragistics2.Win.UltraWinListBar.v10.3.xml" />
+    <Content Include="bin\Debug\Infragistics2.Win.UltraWinListView.v10.3.dll" />
+    <Content Include="bin\Debug\Infragistics2.Win.UltraWinListView.v10.3.xml" />
+    <Content Include="bin\Debug\Infragistics2.Win.UltraWinMaskedEdit.v10.3.dll" />
+    <Content Include="bin\Debug\Infragistics2.Win.UltraWinMaskedEdit.v10.3.xml" />
+    <Content Include="bin\Debug\Infragistics2.Win.UltraWinPrintPreviewDialog.v10.3.dll" />
+    <Content Include="bin\Debug\Infragistics2.Win.UltraWinPrintPreviewDialog.v10.3.xml" />
+    <Content Include="bin\Debug\Infragistics2.Win.UltraWinSchedule.v10.3.dll" />
+    <Content Include="bin\Debug\Infragistics2.Win.UltraWinSchedule.v10.3.xml" />
+    <Content Include="bin\Debug\Infragistics2.Win.UltraWinSpellChecker.v10.3.dll" />
+    <Content Include="bin\Debug\Infragistics2.Win.UltraWinSpellChecker.v10.3.xml" />
+    <Content Include="bin\Debug\Infragistics2.Win.UltraWinStatusBar.v10.3.dll" />
+    <Content Include="bin\Debug\Infragistics2.Win.UltraWinStatusBar.v10.3.xml" />
+    <Content Include="bin\Debug\Infragistics2.Win.UltraWinTabbedMdi.v10.3.dll" />
+    <Content Include="bin\Debug\Infragistics2.Win.UltraWinTabbedMdi.v10.3.xml" />
+    <Content Include="bin\Debug\Infragistics2.Win.UltraWinTabControl.v10.3.dll" />
+    <Content Include="bin\Debug\Infragistics2.Win.UltraWinTabControl.v10.3.xml" />
+    <Content Include="bin\Debug\Infragistics2.Win.UltraWinToolbars.v10.3.dll" />
+    <Content Include="bin\Debug\Infragistics2.Win.UltraWinToolbars.v10.3.xml" />
+    <Content Include="bin\Debug\Infragistics2.Win.UltraWinTree.v10.3.dll" />
+    <Content Include="bin\Debug\Infragistics2.Win.UltraWinTree.v10.3.xml" />
+    <Content Include="bin\Debug\Infragistics2.Win.v10.3.dll" />
+    <Content Include="bin\Debug\Infragistics2.Win.v10.3.xml" />
+    <Content Include="bin\Debug\Infragistics4.Shared.v16.1.dll" />
+    <Content Include="bin\Debug\Infragistics4.Shared.v16.1.xml" />
+    <Content Include="bin\Debug\Infragistics4.Shared.v16.2.dll" />
+    <Content Include="bin\Debug\Infragistics4.Shared.v16.2.xml" />
+    <Content Include="bin\Debug\Infragistics4.Win.Misc.v16.1.dll" />
+    <Content Include="bin\Debug\Infragistics4.Win.Misc.v16.1.xml" />
+    <Content Include="bin\Debug\Infragistics4.Win.Misc.v16.2.dll" />
+    <Content Include="bin\Debug\Infragistics4.Win.Misc.v16.2.xml" />
+    <Content Include="bin\Debug\Infragistics4.Win.UltraWinEditors.v16.1.dll" />
+    <Content Include="bin\Debug\Infragistics4.Win.UltraWinEditors.v16.1.xml" />
+    <Content Include="bin\Debug\Infragistics4.Win.UltraWinEditors.v16.2.dll" />
+    <Content Include="bin\Debug\Infragistics4.Win.UltraWinEditors.v16.2.xml" />
+    <Content Include="bin\Debug\Infragistics4.Win.UltraWinGauge.v16.1.dll" />
+    <Content Include="bin\Debug\Infragistics4.Win.UltraWinGauge.v16.1.xml" />
+    <Content Include="bin\Debug\Infragistics4.Win.UltraWinGauge.v16.2.dll" />
+    <Content Include="bin\Debug\Infragistics4.Win.UltraWinGrid.v16.1.dll" />
+    <Content Include="bin\Debug\Infragistics4.Win.UltraWinGrid.v16.1.xml" />
+    <Content Include="bin\Debug\Infragistics4.Win.UltraWinGrid.v16.2.dll" />
+    <Content Include="bin\Debug\Infragistics4.Win.UltraWinGrid.v16.2.xml" />
+    <Content Include="bin\Debug\Infragistics4.Win.UltraWinStatusBar.v16.1.dll" />
+    <Content Include="bin\Debug\Infragistics4.Win.UltraWinStatusBar.v16.1.xml" />
+    <Content Include="bin\Debug\Infragistics4.Win.UltraWinStatusBar.v16.2.dll" />
+    <Content Include="bin\Debug\Infragistics4.Win.UltraWinStatusBar.v16.2.xml" />
+    <Content Include="bin\Debug\Infragistics4.Win.UltraWinTabControl.v16.1.dll" />
+    <Content Include="bin\Debug\Infragistics4.Win.UltraWinTabControl.v16.1.xml" />
+    <Content Include="bin\Debug\Infragistics4.Win.UltraWinTabControl.v16.2.dll" />
+    <Content Include="bin\Debug\Infragistics4.Win.UltraWinTabControl.v16.2.xml" />
+    <Content Include="bin\Debug\Infragistics4.Win.UltraWinToolbars.v16.1.dll" />
+    <Content Include="bin\Debug\Infragistics4.Win.UltraWinToolbars.v16.1.xml" />
+    <Content Include="bin\Debug\Infragistics4.Win.UltraWinToolbars.v16.2.dll" />
+    <Content Include="bin\Debug\Infragistics4.Win.UltraWinToolbars.v16.2.xml" />
+    <Content Include="bin\Debug\Infragistics4.Win.v16.1.dll" />
+    <Content Include="bin\Debug\Infragistics4.Win.v16.1.xml" />
+    <Content Include="bin\Debug\Infragistics4.Win.v16.2.dll" />
+    <Content Include="bin\Debug\Infragistics4.Win.v16.2.xml" />
+    <Content Include="bin\Debug\Ppress.exe" />
+    <Content Include="bin\Debug\Ppress.pdb" />
+    <Content Include="bin\Debug\Ppress.vshost.exe" />
+    <Content Include="bin\Debug\Ppress.xml" />
+    <Content Include="obj\x86\Debug\Ppress.exe" />
+    <Content Include="obj\x86\Debug\ppress.exe.licenses" />
+    <Content Include="obj\x86\Debug\Ppress.pdb" />
+    <Content Include="obj\x86\Debug\Ppress.vbproj.FileListAbsolute.txt" />
+    <Content Include="obj\x86\Debug\Ppress.xml" />
+    <Content Include="obj\x86\Debug\TempPE\DataClasses1.designer.vb.dll" />
+    <Content Include="obj\x86\Debug\TempPE\My Project.Resources.Designer.vb.dll" />
     <Content Include="ScoularECM.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Release\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
